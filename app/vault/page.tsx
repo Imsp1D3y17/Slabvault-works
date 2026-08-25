@@ -1,4 +1,4 @@
-import { SlabCard } from "@/components/SlabCard";
+import { SlabGallery } from "@/components/SlabGallery";
 import { SectionHeader } from "@/components/SectionHeader";
 import { StatBlock } from "@/components/StatBlock";
 
@@ -85,31 +85,32 @@ export default function VaultPage() {
 
         {/* Gallery-wall model: one asymmetric featured slot before the grid */}
         <div className="pt-12">
-          <div className="max-w-xs">
-            <SlabCard
-              name="Charizard · Base Set"
-              grader="PSA"
-              grade={10}
-              gradeLabel="GEM MT"
-              certNumber="47281955"
-              featured
-            />
-          </div>
+          <SlabGallery
+            cards={[
+              {
+                name: "Charizard · Base Set",
+                grader: "PSA",
+                grade: 10,
+                gradeLabel: "GEM MT",
+                certNumber: "47281955",
+                featured: true,
+              },
+            ]}
+            className="max-w-xs"
+          />
         </div>
 
         <SectionHeader>Base Set · 1999</SectionHeader>
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 lg:gap-8">
-          {baseSetCards.map((card) => (
-            <SlabCard key={card.certNumber} {...card} />
-          ))}
-        </div>
+        <SlabGallery
+          cards={baseSetCards}
+          className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 lg:gap-8"
+        />
 
         <SectionHeader>Modern · 2023</SectionHeader>
-        <div className="grid grid-cols-2 gap-6 pb-12 sm:grid-cols-3 lg:grid-cols-4 lg:gap-8">
-          {modernCards.map((card) => (
-            <SlabCard key={card.certNumber} {...card} />
-          ))}
-        </div>
+        <SlabGallery
+          cards={modernCards}
+          className="grid grid-cols-2 gap-6 pb-12 sm:grid-cols-3 lg:grid-cols-4 lg:gap-8"
+        />
       </div>
     </div>
   );

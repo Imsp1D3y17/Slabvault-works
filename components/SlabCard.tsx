@@ -2,6 +2,9 @@ import Link from "next/link";
 import { Gem } from "lucide-react";
 import { GradeBadge } from "./GradeBadge";
 import { RareFlag } from "./RareFlag";
+import { isGemMint, type SlabData } from "./slab-utils";
+
+export type { SlabData };
 
 /**
  * Slab / card display — Brand Kit section 4.
@@ -10,25 +13,9 @@ import { RareFlag } from "./RareFlag";
  * image (name, grader · grade · label in mono, cert number in mono).
  * Without it a slab reads as a stock photo, not a vaulted asset.
  */
-
-function isGemMint(grade: number | string): boolean {
-  const numeric = typeof grade === "number" ? grade : parseFloat(grade);
-  return !Number.isNaN(numeric) && numeric >= 9.5;
-}
-
-interface SlabCardProps {
-  name: string;
-  grader: string;
-  grade: number | string;
-  gradeLabel?: string;
-  certNumber: string;
-  imageSrc?: string;
-  imageAlt?: string;
-  /** Population-1 or other rare variant — shows the magenta outline flag. */
-  populationOne?: boolean;
-  /** Forces the gold "prestige" spotlight/shadow even below a 9.5 grade. */
-  featured?: boolean;
+interface SlabCardProps extends SlabData {
   href?: string;
+  onClick?: () => void;
   className?: string;
 }
 
@@ -43,6 +30,7 @@ export function SlabCard({
   populationOne = false,
   featured = false,
   href,
+  onClick,
   className = "",
 }: SlabCardProps) {
   const gold = featured || isGemMint(grade);
@@ -104,12 +92,20 @@ export function SlabCard({
     </div>
   );
 
+  const interactiveClassName =
+    "block w-full rounded-slab text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan/60";
+
+  if (onClick) {
+    return (
+      <button type="button" onClick={onClick} className={interactiveClassName}>
+        {card}
+      </button>
+    );
+  }
+
   if (href) {
     return (
-      <Link
-        href={href}
-        className="block rounded-slab focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan/60"
-      >
+      <Link href={href} className={interactiveClassName}>
         {card}
       </Link>
     );

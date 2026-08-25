@@ -1,15 +1,11 @@
+import { isGemMint } from "./slab-utils";
+
 /**
  * Grade badges — SlabVault Brand Kit v1.0, section 4 "Grade badges".
  *
  * Non-negotiable: accent-gold is reserved for Gem Mint / 9.5–10 badges.
  * It is never used for buttons, links, or nav elsewhere in the app.
  */
-
-function isGemMint(grade: number | string): boolean {
-  const numeric = typeof grade === "number" ? grade : parseFloat(grade);
-  return !Number.isNaN(numeric) && numeric >= 9.5;
-}
-
 interface GradeBadgeProps {
   grade: number | string;
   label?: string;
