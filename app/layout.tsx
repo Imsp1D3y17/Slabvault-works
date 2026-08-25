@@ -25,10 +25,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           crossOrigin="anonymous"
         />
         <link rel="preconnect" href="https://api.fontshare.com" />
+        {/* Playfair Display + Inter here are for the landing page's
+            "Neon Dramatic" luxury type system (font-landing-*), loaded
+            alongside JetBrains Mono in one request. */}
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap"
         />
         <link
           rel="stylesheet"

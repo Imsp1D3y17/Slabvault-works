@@ -9,12 +9,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // --- Legacy "Neon Dramatic" tokens (Step 1 setup) — kept so nothing
-        // already shipped (app/page.tsx) breaks. New work should use the
-        // SlabVault Brand Kit tokens below instead. ---
+        // --- Legacy "Neon Dramatic" tokens (Step 1 setup, luxury overhaul
+        // pass) — kept scoped to app/page.tsx only. New in-app work should
+        // use the SlabVault Brand Kit tokens below instead. ---
         obsidian: {
-          DEFAULT: "#0B0C10",
-          light: "#1F2833",
+          // Deepened to a near-black matte per the luxury-vault overhaul —
+          // was #0B0C10.
+          DEFAULT: "#05050A",
+          // Slightly lifted glass-surface tone — was #1F2833. Feature cards
+          // themselves now use translucent white + backdrop-blur instead of
+          // this as a solid fill (see app/page.tsx), so it's mostly a
+          // fallback/secondary surface now.
+          light: "#14141F",
         },
         magenta: {
           DEFAULT: "#FF007F",
@@ -65,6 +71,13 @@ module.exports = {
         mono: ['"JetBrains Mono"', '"IBM Plex Mono"', "ui-monospace", "monospace"],
         // v1.1 drops the italic-serif "Plate Label" role — section headers now
         // use font-sans directly (see components/SectionHeader.tsx).
+
+        // --- Landing page ("Neon Dramatic") luxury typography — separate
+        // from the Brand Kit families above so the two systems (marketing
+        // page vs. in-app "Midnight Vault") don't get tangled together. ---
+        "landing-display": ['"Playfair Display"', "Georgia", "serif"],
+        "landing-sans": ["Inter", "system-ui", "sans-serif"],
+        "landing-mono": ['"JetBrains Mono"', "ui-monospace", "monospace"],
       },
       borderRadius: {
         slab: "6px",
@@ -80,6 +93,14 @@ module.exports = {
         "glow-gold": "0 0 80px -20px rgba(184, 147, 90, 0.35)",
         "glow-cyan-sm": "0 0 40px -12px rgba(0, 212, 232, 0.25)",
         "glow-gold-sm": "0 0 40px -12px rgba(184, 147, 90, 0.25)",
+
+        // --- Landing page luxury-overhaul shadows ---
+        // Multi-stop neon glow for the primary CTA (magenta + cyan).
+        "landing-cta":
+          "0 10px 40px -8px rgba(255,0,127,0.45), 0 10px 70px -14px rgba(0,240,255,0.35)",
+        // Inner highlight + outer cyan glow for the hero badge pill.
+        "landing-badge":
+          "inset 0 1px 0 0 rgba(255,255,255,0.12), 0 0 30px -6px rgba(0,240,255,0.5)",
       },
       backgroundImage: {
         // Section header "cove light" cap — see brand kit Layout / grid guidelines.
