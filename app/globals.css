@@ -29,3 +29,17 @@ body {
   color: var(--foreground);
   font-family: "General Sans", Inter, system-ui, Arial, Helvetica, sans-serif;
 }
+
+/* Brand Kit section 4 Motion: "fade + slight scale-up (0.98 -> 1), never
+   slide-from-off-screen." A CSS keyframe (rather than JS-driven state)
+   so any element can re-trigger it just by remounting on a new `key`. */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
