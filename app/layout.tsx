@@ -10,12 +10,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="dark h-full antialiased">
       <body className="min-h-full flex flex-col bg-obsidian text-white">
-        {/* SlabVault Brand Kit v1.0 fonts — React 19 hoists these <link>
+        {/* SlabVault Brand Kit v1.1 fonts — React 19 hoists these <link>
             elements into <head> and dedupes them (see globals.css for why
             this replaces a CSS @import). The next-lines below disable
             no-page-custom-font, a Pages Router rule (warns to move fonts
             into pages/_document.js) that doesn't apply here: this is the
-            App Router root layout, so these fonts already load globally. */}
+            App Router root layout, so these fonts already load globally.
+            v1.1 drops Fraunces (the italic "Plate Label" role is gone —
+            section headers now use font-sans, see SectionHeader.tsx). */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -26,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Fraunces:ital,opsz@1,9..144&display=swap"
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
         />
         <link
           rel="stylesheet"
