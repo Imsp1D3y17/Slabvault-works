@@ -169,3 +169,14 @@ function TrustBanner() {
     </footer>
   );
 }
+const [displaySettings, setDisplaySettings] = useState<DisplaySettings>({
+  mount: 'triumph-rail',
+  theme: 'triumph-amber',
+  background: 'triumph-vault',
+  layout: 'triumph-monolith',
+  showSubgrades: true,
+  showLiveComps: true,
+  showLightingHalo: true,
+  rotationSpeed: 0.5,
+  ambientLightIntensity: 0.8,
+});
