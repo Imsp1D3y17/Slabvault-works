@@ -30,7 +30,29 @@ const features = [
   },
 ];
 
-export default function Home() {
+export default function Home() {export default function Home() {
+  const [displaySettings, setDisplaySettings] = useState<DisplaySettings>({
+    mount: 'triumph-rail',
+    theme: 'triumph-amber',
+    background: 'triumph-vault',
+    layout: 'triumph-monolith',
+    showSubgrades: true,
+    showLiveComps: true,
+    showLightingHalo: true,
+    rotationSpeed: 0.5,
+    ambientLightIntensity: 0.8,
+  });
+
+  return (
+    <div className="relative flex min-h-screen f">
+      <Nav />
+      <Hero />
+      <Features />
+      <TrustBanner />
+    </div>
+  );
+}
+
   return (
     <div className="relative flex min-h-screen flex-col overflow-x-clip bg-[linear-gradient(180deg,#05050A_0%,#0A0A16_45%,#05050A_100%)] font-landing-sans text-white">
       <Nav />
